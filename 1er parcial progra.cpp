@@ -1,5 +1,26 @@
 #include <iostream>
 using namespace std;
+// Parte 1 Juan Pzblo
+void insercion(int arr[], int n) {
+	for (int i = 1; i < n; i++) {
+		int key = arr[i];
+		int j = i - 1;
+		while (j >= 0 && arr[j] > key) {
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = key;
+	}
+}
+int busquedaLineal(int arr[], int tamanio, int valorBuscado) {
+	for (int i = 0; i < tamanio; i++) {
+		if (arr[i] == valorBuscado) {
+			return i; // Se encontró el valor, devuelve el índice
+		}
+	}
+	return -1; // No se encontró el valor
+}
+// Fin parte 1
 // Parte3 Sara Mendez
 void ordenamiento(int arr[], int n)
 {
@@ -40,6 +61,51 @@ int busquedaL2(string arreglo[], int tamanio, string valorBuscado) {
 }
 int main()
 {
+	// Parte 1 Juan Pablo
+	int numero[10];
+	string cadena[10];
+	int arr[10];
+
+
+	cout << "Ingrese todos los numeros que desee ordenar:" << endl;
+	for (int i=0; i<10; i++)
+	{
+		cin >> arr[i];
+
+	}
+	insercion(arr, 10);
+	cout << "La forma ordenada es:" << endl;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << arr[i] <<",";
+	}
+	return main();
+
+	system("pause");
+		int numero[10];
+	string cadena[10];
+	int arr[10];
+	cout << "Ingrese todos los numeros que desee ordenar:" << endl;
+	for (int i = 0; i < 10; i++)
+	{
+		cin >> arr[i];
+
+	}
+	int tamanio = sizeof(arr) / sizeof(arr[0]);
+	
+	int valor;
+	cout << "Ingrese el numero que desee encontrar" << endl;
+	cin >> valor;
+	int resultado = busquedaLineal(arr, tamanio, valor);
+	if (resultado != -1) {
+		cout << "El valor " << valor << " se encuentra en el índice " <<
+			resultado << endl;
+	}
+	else {
+		cout << "El valor " << valor << " no se encuentra en el arreglo"
+			<<endl;
+	}
+	// Fin parte 1
    //Parte 3 Sara Mendez 
 	int numero[10];
 	string cadena[10];
