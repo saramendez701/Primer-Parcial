@@ -21,6 +21,33 @@ int busquedaLineal(int arr[], int tamanio, int valorBuscado) {
 	return -1; // No se encontró el valor
 }
 // Fin parte 1
+// Parte 2 Diego Julian 
+void insercion1(string arr[], int n) {
+    for (int i = 1; i < n; i++) {
+        string key = arr[i];
+        int j = i - 1;
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+int busquedaBinaria(int arreglo[], int inicio, int fin, int valorBuscado) {
+    if (inicio <= fin) {
+        int medio = inicio + (fin - inicio) / 2;
+        if (arreglo[medio] == valorBuscado) {
+            return medio; // Se encontró el valor, devuelve el índice
+        }
+        if (arreglo[medio] > valorBuscado) {
+            return busquedaBinaria(arreglo, inicio, medio - 1,
+                valorBuscado); // Buscar en la mitad inferior
+        }
+        return busquedaBinaria(arreglo, medio + 1, fin, valorBuscado); //Buscar en la mitad superior
+    }
+    return -1; // No se encontró el valor
+}
+// Fin de parte 2
 // Parte3 Sara Mendez
 void ordenamiento(int arr[], int n)
 {
@@ -106,6 +133,47 @@ int main()
 			<<endl;
 	}
 	// Fin parte 1
+   // Parte 2 Diego Cifuentes
+	// Ordenamiento 
+	int cadena[10];
+    int numero_escoger = 0;
+    cout << "Ingrese 10 palabras sin espacios" << endl;
+    for (int lista = 0; lista < 10; lista++)
+    {
+        cin >> cadena[lista];
+    }
+    int n = sizeof(cadena) / sizeof(cadena[0]);
+    insercion(cadena, n);
+    cout << "datos ordenados \n";
+    for (int i = 0; i < n; i++)
+        cout << cadena[i] << " ";
+    cout << endl;
+    cout << "De los datos ingresados, cual quiere escoger?" << endl; // ingrese unos de los numeros ya ingresados
+    cin >> numero_escoger;
+    int valor = numero_escoger;
+    int resultado = busquedaBinaria(cadena, 0, n - 1, valor);
+    if (resultado != -1) {
+        cout << "El valor " << valor << " se encuentra en el indice " <<
+            resultado << endl;
+    }
+    else {
+        cout << "El valor " << valor << " no se encuentra en el arreglo" <<
+            endl;
+    }
+	// Busqueda
+	 string cadena[10];
+    cout << "Ingrese 10 palabras sin espacios" << endl;
+    for (int lista = 0; lista < 10; lista++)
+    {
+        cin >> cadena[lista];
+    }
+    int n = sizeof(cadena) / sizeof(cadena[0]);
+    insercion1(cadena, n);
+    cout << "datos ordenados \n";
+    for (int i = 0; i < n; i++)
+        cout << cadena[i] << " ";
+    cout << endl;
+   // Fin de parte 2 
    //Parte 3 Sara Mendez 
 	int numero[10];
 	string cadena[10];
